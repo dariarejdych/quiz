@@ -93,11 +93,11 @@ function startQuiz() {
         drawQuestion(question);
     }
 
-    var element = document.getElementById("quiz");
+    var quizConteiner = document.getElementById("quiz");
     var submitButton = document.createElement("button");
     submitButton.onclick = submitQuiz;
-    submitButton.innerHTML = "Wyślij QUIZ";
-    element.appendChild(submitButton);
+    submitButton.innerHTML = "Zakończ i wyślij";
+    quizConteiner.appendChild(submitButton);
 
 }
 
@@ -116,7 +116,21 @@ function submitQuiz() {
             }
         }
     }
-    console.log("Odpowiedziałeś poprawnie na " + correctAnswersCount + " z " + questions.length + " pytań")
+    var quizConteiner = document.getElementById("quiz");
+    document.body.removeChild(quizConteiner);
+    console.log("Odpowiedziałeś poprawnie na " + correctAnswersCount + " z " + questions.length + " pytań");
+
+    var countCorrect = document.createElement("div");
+    countCorrect.id = "quiz-button";
+    document.body.appendChild(countCorrect);
+    var countCorrectPara = document.createElement("p");
+    countCorrect.appendChild(countCorrectPara);
+    countCorrectPara.innerHTML = "Odpowiedziałeś poprawnie na " + correctAnswersCount + " z " + questions.length + " pytań";
+
+    var tryAgainButton = document.createElement("button");
+    tryAgainButton.onclick = startQuiz;
+    tryAgainButton.innerHTML = "Spróbuj ponownie";
+    countCorrect.appendChild(tryAgainButton);
 }
 
 // startQuiz();

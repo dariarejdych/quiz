@@ -1,15 +1,15 @@
 #quiz-button {
-text-align: center;
-margin-top: 45vh;
-  }
-  #quiz-button-start {
+    text-align: center;
+    margin-top: 45vh;
+}
+#quiz-button-start {
     margin: 0 auto;
     display: inline-block;
-  background-color: #57b2f8;
-  border: none;
-  border-radius: 15px;
-  padding: 30px;
-  color: white;
+    background-color: #57b2f8;
+    border: none;
+    border-radius: 15px;
+    padding: 30px;
+    color: white;
 }
 .quiz-question-style {
     font-size: 20px;

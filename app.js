@@ -47,7 +47,7 @@ function drawAnswersForQuestionInForm(question, questionDiv) {
         answerDiv.className = "quiz-answers sg-text--gray";
         var radio = document.createElement("input");
         radio.type = "radio";
-        radio.name = "radioGrp";
+        radio.name = question.id.toString();
         radio.id = question.id.toString() + answer.id.toString();
         radio.value = "myradio1";
         answerDiv.appendChild(radio)

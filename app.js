@@ -1,4 +1,9 @@
 var url = "https://cdn.rawgit.com/kdzwinel/cd08d08002995675f10d065985257416/raw/811ad96a0567648ff858b4f14d0096ba241f28ef/quiz-data.json";
+var jsonString = getJSON(url);
+var json = JSON.parse(jsonString);
+var timeSeconds = json.time_seconds;
+var questions = json.questions;
+var interval;
 
 function getJSON(url) {
     var resp;
@@ -15,11 +20,7 @@ function getJSON(url) {
     return resp;
 }
 
-var jsonString = getJSON(url);
-var json = JSON.parse(jsonString);
-var timeSeconds = json.time_seconds;
 
-var questions = json.questions;
 
 function drawQuestion(question) {
 
@@ -66,15 +67,56 @@ function drawAnswersForQuestionInForm(question, questionDiv) {
 
 function startQuiz() {
 
-  var quizButton = document.getElementById("quiz-button");
-  // var quizButtonStart = document.getElementById("quiz-button-start");
-  // quizButton.removeChild(quizButtonStart);
-  document.body.removeChild(quizButton);
+    var timeToEnd = timeSeconds;
+    interval = setInterval(function() {
+        if (timeToEnd == 0) {
+            submitQuiz();
+            return;
+        }
+        timeToEnd--;
+        var minutes = parseInt(timeToEnd / 60);
+        var seconds = timeToEnd % 60;
+        console.log(minutes + ":" + (seconds < 10 ? "0" : "") + seconds);
+    }, 1000);
+
+    var quizButton = document.getElementById("quiz-button");
+    // var quizButtonStart = document.getElementById("quiz-button-start");
+    // quizButton.removeChild(quizButtonStart);
+    document.body.removeChild(quizButton);
+    var quizDiv = document.createElement("div");
+    quizDiv.id = "quiz";
+    document.body.appendChild(quizDiv);
+
 
     for (i in questions) {
         var question = questions[i];
         drawQuestion(question);
     }
+
+    var element = document.getElementById("quiz");
+    var submitButton = document.createElement("button");
+    submitButton.onclick = submitQuiz;
+    submitButton.innerHTML = "Wyślij QUIZ";
+    element.appendChild(submitButton);
+
+}
+
+function submitQuiz() {
+    clearInterval(interval);
+    var correctAnswersCount = 0;
+    var questions = json.questions;
+    for (questionIndex in questions) {
+        var question = questions[questionIndex]
+        var answers = question.answers;
+        for (answerIndex in answers) {
+            var answer = answers[answerIndex]
+            var radioInput = document.getElementById(question.id.toString() + answer.id.toString())
+            if (answer.correct == true && radioInput.checked == true) {
+                correctAnswersCount++;
+            }
+        }
+    }
+    console.log("Odpowiedziałeś poprawnie na " + correctAnswersCount + " z " + questions.length + " pytań")
 }
 
 // startQuiz();

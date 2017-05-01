@@ -26,45 +26,49 @@ function drawQuestion(question) {
     var questionDiv = document.createElement("div");
     questionDiv.className = "quiz-question";
     var questionParagraph = document.createElement("p");
-    questionParagraph.innerHTML = question.question
-    questionDiv.appendChild(questionParagraph)
+    questionParagraph.className = "sg-header-primary";
+    questionParagraph.innerHTML = question.question;
+    questionDiv.appendChild(questionParagraph);
 
-    var questionForm = document.createElement("form");
-    drawAnswersForQuestionInForm(question, questionForm)
-    questionDiv.appendChild(questionForm);
+
+    drawAnswersForQuestionInForm(question, questionDiv);
 
     var element = document.getElementById("quiz");
     element.appendChild(questionDiv);
 }
 
-function drawAnswersForQuestionInForm(question, form) {
+function drawAnswersForQuestionInForm(question, questionDiv) {
     var answers = question.answers;
     console.log(question);
-     for (i in answers) {
-      var answer = answers[i]
-      console.log(answer);
+    for (i in answers) {
+        var answer = answers[i];
+        console.log(answer);
+        var answerDiv = document.createElement("div");
+        answerDiv.className = "quiz-answers sg-text--gray";
         var radio = document.createElement("input");
         radio.type = "radio";
         radio.name = "radioGrp";
         radio.id = question.id.toString() + answer.id.toString();
         radio.value = "myradio1";
-        var objTextNode1 = document.createTextNode(answer.answer);
+        answerDiv.appendChild(radio)
 
         var objLabel = document.createElement("label");
         objLabel.htmlFor = radio.id;
-        objLabel.appendChild(radio);
-        objLabel.appendChild(objTextNode1);
-        form.appendChild(objLabel);
+        var span = document.createElement("span");
+        objLabel.appendChild(span);
+        objLabel.innerHTML = objLabel.innerHTML + answer.answer
 
-        objLabel.innerHTML= objLabel.innerHTML + "<br>";
-     }
+        answerDiv.appendChild(objLabel);
+        questionDiv.appendChild(answerDiv);
+
+    }
 }
 
 function startQuiz() {
-  for (i in questions) {
+    for (i in questions) {
         var question = questions[i];
         drawQuestion(question);
-  }
+    }
 }
 
-startQuiz()
+startQuiz();

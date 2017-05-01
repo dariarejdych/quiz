@@ -26,7 +26,7 @@ function drawQuestion(question) {
     var questionDiv = document.createElement("div");
     questionDiv.className = "quiz-question";
     var questionParagraph = document.createElement("p");
-    questionParagraph.className = "sg-header-primary";
+    questionParagraph.className = "sg-header-primary quiz-question-style";
     questionParagraph.innerHTML = question.question;
     questionDiv.appendChild(questionParagraph);
 
@@ -65,10 +65,16 @@ function drawAnswersForQuestionInForm(question, questionDiv) {
 }
 
 function startQuiz() {
+
+  var quizButton = document.getElementById("quiz-button");
+  // var quizButtonStart = document.getElementById("quiz-button-start");
+  // quizButton.removeChild(quizButtonStart);
+  document.body.removeChild(quizButton);
+
     for (i in questions) {
         var question = questions[i];
         drawQuestion(question);
     }
 }
 
-startQuiz();
+// startQuiz();

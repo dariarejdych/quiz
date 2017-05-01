@@ -1,4 +1,17 @@
-.sg-header-primary {
+#quiz-button {
+text-align: center;
+margin-top: 45vh;
+  }
+  #quiz-button-start {
+    margin: 0 auto;
+    display: inline-block;
+  background-color: #57b2f8;
+  border: none;
+  border-radius: 15px;
+  padding: 30px;
+  color: white;
+}
+.quiz-question-style {
     font-size: 20px;
     padding: 15px 15px;
     background-color: #7ed7ac;
@@ -30,7 +43,7 @@ input[type="radio"]+label span {
     border-radius: 50%;
 }
 input[type="radio"]+label span {
-    background-color: #9fa6b5;
+    border: 1px solid black;
 }
 input[type="radio"]:checked+label span {
     background-color: #56B3F9;

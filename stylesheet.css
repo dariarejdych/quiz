@@ -8,17 +8,17 @@ header {
     z-index: 1;
 }
 .quiz-menu {
-  margin: 0;
-  padding: 10px;
-  color: white;
-  font-size: 20px;
+    margin: 0;
+    padding: 10px;
+    color: white;
+    font-size: 20px;
 }
 .quiz-menu>li {
     display: inline-block;
     padding-right: 10px;
 }
 #quiz {
-margin-top: 3.5em;
+    margin-top: 3.5em;
 }
 .quiz-button-pos {
     text-align: center;
@@ -32,6 +32,11 @@ margin-top: 3.5em;
     border-radius: 15px;
     padding: 30px;
     color: white;
+}
+.quiz-button-submit {
+    padding: 10px 15px;
+    margin: 30px 0 0 10px;
+    font-size: 20px;
 }
 .quiz-question-style {
     font-size: 20px;
@@ -75,4 +80,15 @@ input[type="radio"]+label span, input[type="radio"]:checked+label span {
     -o-transition: background-color 0.4s linear;
     -moz-transition: background-color 0.4s linear;
     transition: background-color 0.4s linear;
+}
+.quiz-summary-container > p {
+    font-size: 25px;
+    margin-top: 15%;
+    text-align: center;
+}
+.quiz-summary-container > button {
+  margin: 0 auto;
+  display: flex;
+  font-size: 20px;
+  padding: 10px 15px;
 }

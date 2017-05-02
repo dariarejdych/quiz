@@ -100,6 +100,7 @@ function startQuiz() {
     submitButton.onclick = submitQuiz;
     submitButton.innerHTML = "Zakończ i wyślij";
     quizConteiner.appendChild(submitButton);
+    submitButton.className = "quiz-button-custom quiz-button-submit sg-header-primary";
 
     header();
 
@@ -123,6 +124,7 @@ function header() {
 }
 
 function submitQuiz() {
+
     clearInterval(interval);
     var correctAnswersCount = 0;
     var questions = json.questions;
@@ -143,12 +145,15 @@ function submitQuiz() {
 
     var countCorrect = document.createElement("div");
     countCorrect.id = "quiz-button";
+    countCorrect.className = "quiz-summary-container";
     document.body.appendChild(countCorrect);
     var countCorrectPara = document.createElement("p");
     countCorrect.appendChild(countCorrectPara);
     countCorrectPara.innerHTML = "Odpowiedziałeś poprawnie na " + correctAnswersCount + " z " + questions.length + " pytań";
+    countCorrectPara.className = "sg-header-primary";
 
     var tryAgainButton = document.createElement("button");
+    tryAgainButton.className = "sg-header-primary quiz-button-custom";
     tryAgainButton.onclick = startQuiz;
     tryAgainButton.innerHTML = "Spróbuj ponownie";
     countCorrect.appendChild(tryAgainButton);

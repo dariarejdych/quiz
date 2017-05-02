@@ -76,12 +76,14 @@ function startQuiz() {
         timeToEnd--;
         var minutes = parseInt(timeToEnd / 60);
         var seconds = timeToEnd % 60;
-        console.log(minutes + ":" + (seconds < 10 ? "0" : "") + seconds);
+        // console.log(minutes + ":" + (seconds < 10 ? "0" : "") + seconds);
+
+        var timer = document.getElementById("quiz-timer");
+        timer.innerHTML = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
     }, 1000);
 
     var quizButton = document.getElementById("quiz-button");
-    // var quizButtonStart = document.getElementById("quiz-button-start");
-    // quizButton.removeChild(quizButtonStart);
     document.body.removeChild(quizButton);
     var quizDiv = document.createElement("div");
     quizDiv.id = "quiz";
@@ -98,6 +100,25 @@ function startQuiz() {
     submitButton.onclick = submitQuiz;
     submitButton.innerHTML = "Zakończ i wyślij";
     quizConteiner.appendChild(submitButton);
+
+    header();
+
+}
+
+function header() {
+
+    var quizConteiner = document.getElementById("quiz")
+    var headerDiv = document.createElement("header");
+    quizConteiner.appendChild(headerDiv);
+    var headerList = document.createElement("ul");
+    headerDiv.appendChild(headerList);
+    var headerLi1 = document.createElement("li");
+    var headerLi2 = document.createElement("li");
+    headerList.appendChild(headerLi1);
+    headerList.appendChild(headerLi2);
+    headerLi2.id = "quiz-timer";
+    headerList.className = "sg-header-primary quiz-menu";
+    headerLi1.innerHTML = "Czas do końca:"
 
 }
 
@@ -131,6 +152,7 @@ function submitQuiz() {
     tryAgainButton.onclick = startQuiz;
     tryAgainButton.innerHTML = "Spróbuj ponownie";
     countCorrect.appendChild(tryAgainButton);
+
 }
 
 // startQuiz();

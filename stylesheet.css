@@ -1,8 +1,30 @@
-#quiz-button {
+header {
+    box-sizing: content-box;
+    background-color: #57b2f8;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+.quiz-menu {
+  margin: 0;
+  padding: 10px;
+  color: white;
+  font-size: 20px;
+}
+.quiz-menu>li {
+    display: inline-block;
+    padding-right: 10px;
+}
+#quiz {
+margin-top: 3.5em;
+}
+.quiz-button-pos {
     text-align: center;
     margin-top: 45vh;
 }
-#quiz-button-start {
+.quiz-button-custom {
     margin: 0 auto;
     display: inline-block;
     background-color: #57b2f8;

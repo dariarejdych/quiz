@@ -22,13 +22,14 @@ function getJSON(url) {
 
 
 
-function drawQuestion(question) {
+function drawQuestion(index, question) {
 
+    var questionIndex = parseInt(index)+1;
     var questionDiv = document.createElement("div");
     questionDiv.className = "quiz-question";
     var questionParagraph = document.createElement("p");
     questionParagraph.className = "sg-header-primary quiz-question-style";
-    questionParagraph.innerHTML = question.question;
+    questionParagraph.innerHTML = questionIndex + ". " + question.question;
     questionDiv.appendChild(questionParagraph);
 
 
@@ -92,7 +93,7 @@ function startQuiz() {
 
     for (i in questions) {
         var question = questions[i];
-        drawQuestion(question);
+        drawQuestion(i, question);
     }
 
     var quizConteiner = document.getElementById("quiz");
